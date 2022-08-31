@@ -1,0 +1,14 @@
+{
+  "name": "sistema_recado_bootstrap",
+  "version": "1.0.0",
+  "description": "Trabalho Final Módulo",
+  "main": "clear",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andre Lorente",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.8.2"
+  }
+}

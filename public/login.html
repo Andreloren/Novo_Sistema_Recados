@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Página de Login</title>
+  </head>
+  <body>
+    <main>
+      <h1>PÁGINA DE LOGIN</h1>
+      <form id="formularioLogin">
+        <fieldset id="caixaLogin">
+          <legend id="tituloLogin">JÁ POSSUI CADASTRO?</legend>
+          <h4>Para entrar informe um CPF e Senha válidos.</h4>
+          <label for="cpfLogin">*CPF</label>
+          <input type="text" id="cpfLogin" placeholder="CPF" />
+
+          <label for="senhaLogin">*Senha</label>
+          <input type="text" id="senhaLogin" placeholder="Senha" />
+          <button id="botaoAcessar">ACESSAR CONTA</button>
+        </fieldset>
+      </form>
+
+      <form id="formularioCadastro">
+        <fieldset id="caixaCadastro">
+          <legend id="tituloCadastro">NÃO POSSUI CADASTRO?</legend>
+          <h4>Crie sua conta!</h4>
+          <label for="cpfCadastro">*CPF</label>
+          <input type="text" id="cpfCadastro" placeholder="CPF" />
+          <button id="botaoCadastrar">INICIAR CADASTRO</button>
+        </fieldset>
+      </form>
+      <!-- MODAL DE CADASTRO -->
+      <form id="modalCadastro">
+        <h3>Complete seu Cadastro</h3>
+        <h4>Identificamos você, favor completar cadastro.</h4>
+
+        <label for="nomeCadastro">*Nome Completo</label>
+        <input type="text" id="nomeCadastro" />
+        <label for="cpfCadastro2">CPF</label>
+        <input type="text" id="cpfCadastro2" />
+        <label for="emailCadastro">*E-mail</label>
+        <input type="text" id="emailCadastro" />
+        <label for="senhaCadastro">*Senha</label>
+        <input type="text" id="senhaCadastro" />
+        <label for="senhaConfirm">*Confirmação de Senha</label>
+        <input type="text" id="senhaConfirm" />
+        <input
+          type="submit"
+          id="cadastrarNovo"
+          value="Cadastrar Novo Usuário"
+          onclick="cadastrarUsuarios();"
+        />
+      </form>
+    </main>
+    <script src="./js/login.js"></script>
+  </body>
+</html>
