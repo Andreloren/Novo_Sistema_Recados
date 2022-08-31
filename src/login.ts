@@ -1,3 +1,5 @@
+// Parte de Logar Usuario
+
 let cpfLogin = document.getElementById("cpfLogin") as HTMLInputElement;
 let senhaLogin = document.getElementById("senhaLogin") as HTMLInputElement;
 
@@ -30,11 +32,27 @@ function logarUsuario(): void {
 
   if (!usuarioAchado) {
     alert("Não achei ninguém");
+    resetLogin();
+    return;
   }
+
+  localStorage.setItem("usuarioLogado", usuarioAchado.cpf);
+
+  window.location.href = "cadastro.html";
 }
 
-function cadastrarUsuario() {}
+function resetLogin(): void {
+  cpfLogin.value = "";
+  senhaLogin.value = "";
+}
 
 function buscarUsuarios(): Usuario[] {
   return JSON.parse(localStorage.getItem("usuarios") || "[]");
 }
+
+// Parte do CPF Usuario
+
+let cpfHTML = document.getElementById("cpfCadastro") as HTMLInputElement;
+let botaoCPF = document.getElementById("botaoCadastrar") as HTMLButtonElement;
+
+// botaoCPF.addEventListener("click",());
