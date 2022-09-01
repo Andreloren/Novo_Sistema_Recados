@@ -32,6 +32,28 @@
           <button id="botaoCadastrar">INICIAR CADASTRO</button>
         </fieldset>
       </form>
+      <!-- MODAL DE CADASTRO -->
+      <div id="modal">
+        <h3>Complete seu Cadastro</h3>
+        <p id="cpfCadastro2"></p>
+        <h4>Identificamos você, favor completar cadastro.</h4>
+
+        <form id="modalCadastro">
+          <label for="nomeCadastro">*Nome Completo</label>
+          <input type="text" id="nomeCadastro" />
+          <label for="emailCadastro">*E-mail</label>
+          <input type="text" id="emailCadastro" />
+          <label for="senhaCadastro">*Senha</label>
+          <input type="text" id="senhaCadastro" />
+          <label for="senhaConfirm">*Confirmação de Senha</label>
+          <input type="text" id="senhaConfirm" />
+          <input
+            type="submit"
+            id="cadastrarNovo"
+            value="Cadastrar Novo Usuário"
+          />
+        </form>
+      </div>
     </main>
     <script src="./js/login.js"></script>
   </body>

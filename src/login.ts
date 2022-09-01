@@ -37,8 +37,6 @@ function logarUsuario(): void {
   }
 
   localStorage.setItem("usuarioLogado", usuarioAchado.cpf);
-
-  window.location.href = "cadastro.html";
 }
 
 function resetLogin(): void {
@@ -53,6 +51,58 @@ function buscarUsuarios(): Usuario[] {
 // Parte do CPF Usuario
 
 let cpfHTML = document.getElementById("cpfCadastro") as HTMLInputElement;
-let botaoCPF = document.getElementById("botaoCadastrar") as HTMLButtonElement;
+const botaoCPF = document.getElementById("botaoCadastrar") as HTMLButtonElement;
+let aparecerModal = document.getElementById("modal") as HTMLDivElement;
+let mostrarCPFHTML = document.getElementById(
+  "cpfCadastro2"
+) as HTMLParagraphElement;
 
-// botaoCPF.addEventListener("click",());
+botaoCPF.addEventListener("click", (ev) => {
+  ev.preventDefault();
+  mostrarModal();
+  mostrarCPFHTML.innerText = `CPF: ${cpfHTML.value}`;
+});
+
+function mostrarModal(): void {
+  aparecerModal.style.display = "block";
+}
+
+function esconderModal(): void {
+  aparecerModal.style.display = "none";
+}
+
+//Inicio Modal
+let nomeCadastroHTML = document.getElementById(
+  "nomeCadastro"
+) as HTMLInputElement;
+let emailCadastroHTML = document.getElementById(
+  "emailCadastro"
+) as HTMLInputElement;
+let senhaCadastroHTML = document.getElementById(
+  "senhaCadastro"
+) as HTMLInputElement;
+let senhaCadastroConfirmHTML = document.getElementById(
+  "senhaConfirm"
+) as HTMLInputElement;
+const botaoCadastroNovo = document.getElementById(
+  "cadastrarNovo"
+) as HTMLButtonElement;
+
+let formularioCadastro = document.getElementById(
+  "modalCadastro"
+) as HTMLFormElement;
+
+botaoCadastroNovo.addEventListener("click", (ev) => {
+  ev.preventDefault();
+
+  esconderModal();
+});
+
+// document.addEventListener("DOMContentLoaded", () => {});
+
+formularioCadastro.addEventListener("submit", (event) => {
+  event.preventDefault();
+  cadastrarUsuario();
+});
+
+function cadastrarUsuario() {}

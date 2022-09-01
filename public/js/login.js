@@ -18,7 +18,6 @@ function logarUsuario() {
         return;
     }
     localStorage.setItem("usuarioLogado", usuarioAchado.cpf);
-    window.location.href = "cadastro.html";
 }
 function resetLogin() {
     cpfLogin.value = "";
@@ -29,5 +28,34 @@ function buscarUsuarios() {
 }
 // Parte do CPF Usuario
 let cpfHTML = document.getElementById("cpfCadastro");
-let botaoCPF = document.getElementById("botaoCadastrar");
-// botaoCPF.addEventListener("click",());
+const botaoCPF = document.getElementById("botaoCadastrar");
+let aparecerModal = document.getElementById("modal");
+let mostrarCPFHTML = document.getElementById("cpfCadastro2");
+botaoCPF.addEventListener("click", (ev) => {
+    ev.preventDefault();
+    mostrarModal();
+    mostrarCPFHTML.innerText = `CPF: ${cpfHTML.value}`;
+});
+function mostrarModal() {
+    aparecerModal.style.display = "block";
+}
+function esconderModal() {
+    aparecerModal.style.display = "none";
+}
+//Inicio Modal
+let nomeCadastroHTML = document.getElementById("nomeCadastro");
+let emailCadastroHTML = document.getElementById("emailCadastro");
+let senhaCadastroHTML = document.getElementById("senhaCadastro");
+let senhaCadastroConfirmHTML = document.getElementById("senhaConfirm");
+const botaoCadastroNovo = document.getElementById("cadastrarNovo");
+let formularioCadastro = document.getElementById("modalCadastro");
+botaoCadastroNovo.addEventListener("click", (ev) => {
+    ev.preventDefault();
+    esconderModal();
+});
+// document.addEventListener("DOMContentLoaded", () => {});
+formularioCadastro.addEventListener("submit", (event) => {
+    event.preventDefault();
+    cadastrarUsuario();
+});
+function cadastrarUsuario() { }
