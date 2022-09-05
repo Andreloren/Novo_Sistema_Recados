@@ -30,9 +30,17 @@ type Mensagens = {
 
 function logarUsuario(): void {
   let usuarios = buscarUsuarios(); //usuarios -> refere-se a um [] de usuario
+  let cpfLoginHTML = cpfLogin.value.toLowerCase();
+  let senhaLoginHTML = senhaLogin.value;
+
+  if (!cpfLoginHTML || !senhaLoginHTML) {
+    alert("Dados em branco");
+    resetLogin();
+    return;
+  }
 
   let usuarioAchado = usuarios.find((valor) => {
-    valor.cpf === cpfLogin.value && valor.senha === senhaLogin.value;
+    valor.cpf === cpfLoginHTML && valor.senha === senhaLoginHTML;
   });
 
   if (!usuarioAchado) {
@@ -41,7 +49,10 @@ function logarUsuario(): void {
     return;
   }
 
+  login();
   localStorage.setItem("usuarioLogado", usuarioAchado.cpf);
+  resetLogin();
+  window.location.href = "sistema.html";
 }
 
 function resetLogin(): void {
@@ -51,6 +62,11 @@ function resetLogin(): void {
 
 function buscarUsuarios(): Usuario[] {
   return JSON.parse(localStorage.getItem("usuarios") || "[]");
+}
+
+function login(): void {
+  alert("Logado");
+  //melhorar
 }
 
 // Parte do CPF Usuario

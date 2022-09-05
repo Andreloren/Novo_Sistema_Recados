@@ -14,15 +14,25 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 function logarUsuario() {
     let usuarios = buscarUsuarios(); //usuarios -> refere-se a um [] de usuario
+    let cpfLoginHTML = cpfLogin.value.toLowerCase();
+    let senhaLoginHTML = senhaLogin.value;
+    if (!cpfLoginHTML || !senhaLoginHTML) {
+        alert("Dados em branco");
+        resetLogin();
+        return;
+    }
     let usuarioAchado = usuarios.find((valor) => {
-        valor.cpf === cpfLogin.value && valor.senha === senhaLogin.value;
+        valor.cpf === cpfLoginHTML && valor.senha === senhaLoginHTML;
     });
     if (!usuarioAchado) {
         alert("Não achei ninguém");
         resetLogin();
         return;
     }
+    login();
     localStorage.setItem("usuarioLogado", usuarioAchado.cpf);
+    resetLogin();
+    window.location.href = "sistema.html";
 }
 function resetLogin() {
     cpfLogin.value = "";
@@ -30,6 +40,10 @@ function resetLogin() {
 }
 function buscarUsuarios() {
     return JSON.parse(localStorage.getItem("usuarios") || "[]");
+}
+function login() {
+    alert("Logado");
+    //melhorar
 }
 // Parte do CPF Usuario
 let cpfHTML = document.getElementById("cpfCadastro");
