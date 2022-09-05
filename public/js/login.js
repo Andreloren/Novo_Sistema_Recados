@@ -7,6 +7,11 @@ botaoLogin.addEventListener("click", (e) => {
     e.preventDefault();
     logarUsuario();
 });
+document.addEventListener("DOMContentLoaded", () => {
+    if (!localStorage.getItem("usuarios")) {
+        localStorage.setItem("usuarios", JSON.stringify([]));
+    }
+});
 function logarUsuario() {
     let usuarios = buscarUsuarios(); //usuarios -> refere-se a um [] de usuario
     let usuarioAchado = usuarios.find((valor) => {

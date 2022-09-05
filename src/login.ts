@@ -9,6 +9,11 @@ botaoLogin.addEventListener("click", (e) => {
   logarUsuario();
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  if (!localStorage.getItem("usuarios")) {
+    localStorage.setItem("usuarios", JSON.stringify([]));
+  }
+});
 interface Usuario {
   nome: string;
   cpf: string;
