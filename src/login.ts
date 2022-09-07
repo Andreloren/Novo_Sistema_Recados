@@ -30,40 +30,27 @@ type Mensagens = {
 
 function logarUsuario(): void {
   let usuarios = buscarUsuariosStorage(); //usuarios -> refere-se a um [] de usuario
-  let cpfLoginHTML = cpfLogin.value.toLowerCase();
-  let senhaLoginHTML = senhaLogin.value;
 
-  if (!cpfLoginHTML || !senhaLoginHTML) {
+  if (!cpfLogin.value || !senhaLogin.value) {
     alert("Dados em branco");
     resetLogin();
     return;
   }
 
-  let usuarioAchado = usuarios.find((valor) => {
-    valor.cpf === cpfLoginHTML && valor.senha === senhaLoginHTML;
-  });
+  let usuarioAchado = usuarios.find(
+    (valor) => valor.cpf === cpfLogin.value && valor.senha === senhaLogin.value
+  );
 
   if (!usuarioAchado) {
-    alert("Não achei ninguém");
+    alert("CPF ou Senha divergentes");
     //melhorar
     resetLogin();
     return;
   }
 
-  login();
   localStorage.setItem("usuarioLogado", usuarioAchado.cpf);
+  login();
   resetLogin();
-  window.location.href = "sistema.html";
-}
-
-function resetLogin(): void {
-  cpfLogin.value = "";
-  senhaLogin.value = "";
-}
-
-function login(): void {
-  alert("Logado");
-  //melhorar
 }
 
 // Parte do CPF Usuario
@@ -89,6 +76,7 @@ function validarCPF(): void {
   );
   if (existeCPF) {
     alert("CPF já cadastrado no sistema");
+    resetCPF();
     return;
   }
   // aprender a como retirar caracter especial
@@ -100,7 +88,6 @@ function validarCPF(): void {
     alert("Favor digitar cpf com 11 digitos");
     return esconderModal();
   }
-  // validar cpf aqui se já existe
   mostrarModal();
 }
 
@@ -182,7 +169,7 @@ function cadastrarUsuario() {
   const novoUsuario: Usuario = {
     nome: nomeCadastroHTML.value,
     cpf: cpfHTML.value,
-    email: emailCadastroHTML.value,
+    email: emailCadastroHTML.value.toLowerCase(),
     senha: senhaCadastroHTML.value,
     mensagens: [],
   };
@@ -190,6 +177,7 @@ function cadastrarUsuario() {
   listaDeUsuarios.push(novoUsuario);
   salvarUsuarioStorage(listaDeUsuarios);
   resetNovoUsuario();
+  resetCPF();
 }
 
 function buscarUsuariosStorage(): Usuario[] {
@@ -198,6 +186,21 @@ function buscarUsuariosStorage(): Usuario[] {
 
 function salvarUsuarioStorage(novoUsuario: Usuario[]): void {
   localStorage.setItem("usuarios", JSON.stringify(novoUsuario));
+}
+
+function login(): void {
+  alert("Logado");
+  window.location.href = "sistema.html";
+  //melhorar
+}
+
+function resetCPF(): void {
+  cpfHTML.value = "";
+}
+
+function resetLogin(): void {
+  cpfLogin.value = "";
+  senhaLogin.value = "";
 }
 
 function resetNovoUsuario(): void {

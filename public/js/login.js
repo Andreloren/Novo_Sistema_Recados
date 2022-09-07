@@ -14,34 +14,21 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 function logarUsuario() {
     let usuarios = buscarUsuariosStorage(); //usuarios -> refere-se a um [] de usuario
-    let cpfLoginHTML = cpfLogin.value.toLowerCase();
-    let senhaLoginHTML = senhaLogin.value;
-    if (!cpfLoginHTML || !senhaLoginHTML) {
+    if (!cpfLogin.value || !senhaLogin.value) {
         alert("Dados em branco");
         resetLogin();
         return;
     }
-    let usuarioAchado = usuarios.find((valor) => {
-        valor.cpf === cpfLoginHTML && valor.senha === senhaLoginHTML;
-    });
+    let usuarioAchado = usuarios.find((valor) => valor.cpf === cpfLogin.value && valor.senha === senhaLogin.value);
     if (!usuarioAchado) {
-        alert("Não achei ninguém");
+        alert("CPF ou Senha divergentes");
         //melhorar
         resetLogin();
         return;
     }
-    login();
     localStorage.setItem("usuarioLogado", usuarioAchado.cpf);
+    login();
     resetLogin();
-    window.location.href = "sistema.html";
-}
-function resetLogin() {
-    cpfLogin.value = "";
-    senhaLogin.value = "";
-}
-function login() {
-    alert("Logado");
-    //melhorar
 }
 // Parte do CPF Usuario
 let cpfHTML = document.getElementById("cpfCadastro");
@@ -58,6 +45,7 @@ function validarCPF() {
     let existeCPF = cpfExiste.some((cpfExistente) => cpfExistente.cpf === cpfHTML.value);
     if (existeCPF) {
         alert("CPF já cadastrado no sistema");
+        resetCPF();
         return;
     }
     // aprender a como retirar caracter especial
@@ -69,7 +57,6 @@ function validarCPF() {
         alert("Favor digitar cpf com 11 digitos");
         return esconderModal();
     }
-    // validar cpf aqui se já existe
     mostrarModal();
 }
 //Inicio Modal
@@ -121,19 +108,32 @@ function cadastrarUsuario() {
     const novoUsuario = {
         nome: nomeCadastroHTML.value,
         cpf: cpfHTML.value,
-        email: emailCadastroHTML.value,
+        email: emailCadastroHTML.value.toLowerCase(),
         senha: senhaCadastroHTML.value,
         mensagens: [],
     };
     listaDeUsuarios.push(novoUsuario);
     salvarUsuarioStorage(listaDeUsuarios);
     resetNovoUsuario();
+    resetCPF();
 }
 function buscarUsuariosStorage() {
     return JSON.parse(localStorage.getItem("usuarios") || "[]");
 }
 function salvarUsuarioStorage(novoUsuario) {
     localStorage.setItem("usuarios", JSON.stringify(novoUsuario));
+}
+function login() {
+    alert("Logado");
+    window.location.href = "sistema.html";
+    //melhorar
+}
+function resetCPF() {
+    cpfHTML.value = "";
+}
+function resetLogin() {
+    cpfLogin.value = "";
+    senhaLogin.value = "";
 }
 function resetNovoUsuario() {
     nomeCadastroHTML.value === "";
