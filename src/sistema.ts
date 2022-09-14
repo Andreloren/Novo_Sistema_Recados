@@ -8,19 +8,22 @@ let formularioRecados = document.getElementById(
   "tabelaDinamica"
 ) as HTMLFormElement;
 
-interface Usuario {
-  nome: string;
-  cpf: string;
-  email: string;
-  senha: string;
-  mensagens: Mensagens[];
-}
+import { buscarUsuariosStorage } from "./login";
+import { Usuario } from "./login";
+import { Mensagens } from "./login";
+// interface Usuario {
+//   nome: string;
+//   cpf: string;
+//   email: string;
+//   senha: string;
+//   mensagens: Mensagens[];
+// }
 
-type Mensagens = {
-  identificador: string;
-  descricao: string;
-  detalhamento: string;
-};
+// type Mensagens = {
+//   identificador: string;
+//   descricao: string;
+//   detalhamento: string;
+// };
 
 let dadosUsuarioLogado: Usuario;
 
@@ -32,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "login.html";
   }
 
-  let listaUsuarios = buscarTodosUsuariosStorage();
+  let listaUsuarios = buscarUsuariosStorage();
   console.log(listaUsuarios);
   console.log(IDUsuarioLogado);
 
@@ -52,9 +55,9 @@ formularioRecados.addEventListener("submit", (event) => {
   cadastrarMensagens();
 });
 
-function buscarTodosUsuariosStorage(): Usuario[] {
-  return JSON.parse(localStorage.getItem("usuarios") || "[]");
-}
+// function buscarTodosUsuariosStorage(): Usuario[] {
+//   return JSON.parse(localStorage.getItem("usuarios") || "[]");
+// }
 
 function cadastrarMensagens(): void {
   const novaMensagem: Mensagens = {
@@ -69,7 +72,7 @@ function cadastrarMensagens(): void {
 }
 
 function atualizarDadosUsuarioLogado(usuarioAtualizado: Usuario): void {
-  let listaUsuarios = buscarTodosUsuariosStorage();
+  let listaUsuarios = buscarUsuariosStorage();
   let IdUsuarioEncontrado = listaUsuarios.findIndex(
     (usuario) => usuario.cpf === usuarioAtualizado.cpf
   );
@@ -88,9 +91,9 @@ function montarHTML(novasMensagens: Mensagens): void {
   let linha = document.createElement("tr");
   linha.setAttribute("id", novasMensagens.identificador);
 
-  let colunaID = document.createElement("th");
-  colunaID.setAttribute("scope", "row");
-  colunaID.innerHTML = novasMensagens.identificador;
+  let colunaId = document.createElement("th");
+  colunaId.setAttribute("scope", "row");
+  colunaId.innerHTML = novasMensagens.identificador;
 
   let colunaDesc = document.createElement("td");
   colunaDesc.innerHTML = novasMensagens.descricao;
@@ -110,7 +113,7 @@ function montarHTML(novasMensagens: Mensagens): void {
   );
 
   corpo.appendChild(linha);
-  linha.appendChild(colunaID);
+  linha.appendChild(colunaId);
   linha.appendChild(colunaDesc);
   linha.appendChild(colunaDet);
   linha.appendChild(colunaAction);

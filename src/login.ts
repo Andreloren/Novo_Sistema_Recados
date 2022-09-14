@@ -14,13 +14,19 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("usuarios", JSON.stringify([]));
   }
 });
-interface Usuario {
+export interface Usuario {
   nome: string;
   cpf: string;
   email: string;
   senha: string;
   mensagens: Mensagens[];
 }
+
+export type Mensagens = {
+  identificador: string;
+  descricao: string;
+  detalhamento: string;
+};
 
 function logarUsuario(): void {
   let usuarios = buscarUsuariosStorage(); //usuarios -> refere-se a um [] de usuario
@@ -174,7 +180,7 @@ function cadastrarUsuario() {
   resetCPF();
 }
 
-function buscarUsuariosStorage(): Usuario[] {
+export function buscarUsuariosStorage(): Usuario[] {
   return JSON.parse(localStorage.getItem("usuarios") || "[]");
 }
 
