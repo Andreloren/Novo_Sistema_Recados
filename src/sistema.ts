@@ -8,22 +8,19 @@ let formularioRecados = document.getElementById(
   "tabelaDinamica"
 ) as HTMLFormElement;
 
-import { buscarUsuariosStorage } from "./login";
-import { Usuario } from "./login";
-import { Mensagens } from "./login";
-// interface Usuario {
-//   nome: string;
-//   cpf: string;
-//   email: string;
-//   senha: string;
-//   mensagens: Mensagens[];
-// }
+interface Usuario {
+  nome: string;
+  cpf: string;
+  email: string;
+  senha: string;
+  mensagens: Mensagens[];
+}
 
-// type Mensagens = {
-//   identificador: string;
-//   descricao: string;
-//   detalhamento: string;
-// };
+type Mensagens = {
+  identificador: string;
+  descricao: string;
+  detalhamento: string;
+};
 
 let dadosUsuarioLogado: Usuario;
 
@@ -35,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "login.html";
   }
 
-  let listaUsuarios = buscarUsuariosStorage();
+  let listaUsuarios = buscarTodosUsuariosStorage();
   console.log(listaUsuarios);
   console.log(IDUsuarioLogado);
 
@@ -55,9 +52,9 @@ formularioRecados.addEventListener("submit", (event) => {
   cadastrarMensagens();
 });
 
-// function buscarTodosUsuariosStorage(): Usuario[] {
-//   return JSON.parse(localStorage.getItem("usuarios") || "[]");
-// }
+function buscarTodosUsuariosStorage(): Usuario[] {
+  return JSON.parse(localStorage.getItem("usuarios") || "[]");
+}
 
 function cadastrarMensagens(): void {
   const novaMensagem: Mensagens = {
@@ -72,7 +69,7 @@ function cadastrarMensagens(): void {
 }
 
 function atualizarDadosUsuarioLogado(usuarioAtualizado: Usuario): void {
-  let listaUsuarios = buscarUsuariosStorage();
+  let listaUsuarios = buscarTodosUsuariosStorage();
   let IdUsuarioEncontrado = listaUsuarios.findIndex(
     (usuario) => usuario.cpf === usuarioAtualizado.cpf
   );

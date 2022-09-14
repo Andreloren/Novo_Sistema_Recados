@@ -50,9 +50,9 @@ function montarHTML(novasMensagens) {
     let corpo = document.createElement("tbody");
     let linha = document.createElement("tr");
     linha.setAttribute("id", novasMensagens.identificador);
-    let colunaID = document.createElement("th");
-    colunaID.setAttribute("scope", "row");
-    colunaID.innerHTML = novasMensagens.identificador;
+    let colunaId = document.createElement("th");
+    colunaId.setAttribute("scope", "row");
+    colunaId.innerHTML = novasMensagens.identificador;
     let colunaDesc = document.createElement("td");
     colunaDesc.innerHTML = novasMensagens.descricao;
     let colunaDet = document.createElement("td");
@@ -65,7 +65,7 @@ function montarHTML(novasMensagens) {
     botaoApagar.innerHTML = "Apagar";
     botaoApagar.addEventListener("click", () => apagarMensagens(novasMensagens.identificador));
     corpo.appendChild(linha);
-    linha.appendChild(colunaID);
+    linha.appendChild(colunaId);
     linha.appendChild(colunaDesc);
     linha.appendChild(colunaDet);
     linha.appendChild(colunaAction);
