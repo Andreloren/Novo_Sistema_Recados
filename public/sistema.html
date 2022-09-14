@@ -16,51 +16,60 @@
   </head>
   <body>
     <main>
-      <section>
-        <h1>SISTEMA DE RECADOS</h1>
-        <form id="tabelaDinamica">
-          <legend id="legenda">
-            Painel de Recados de <span id="userEmail"></span>
-          </legend>
-          <label for="descricao"
-            ><input
-              type="text"
-              name="descrição"
-              maxlength="50"
-              id="descricao"
-              placeholder="descricao"
-            />
-          </label>
-          <label for="detalhamento"
-            ><input
-              type="text"
-              name="detalhamento"
-              id="detalhamento"
-              maxlength="50"
-              placeholder="detalhamento"
-          /></label>
-          <input type="submit" value="Salvar" />
-          <button id="logout">Sair</button>
-        </form>
-      </section>
-      <section>
-        <hr />
-        <table id="tabelaRegistros">
-          <tr class="cabecalhoTabela">
-            <th>#</th>
-            <th>Descrição</th>
-            <th>Detalhamento</th>
-            <th>Ações</th>
-          </tr>
-          <!-- Montagem da Tabela JS -->
-          <!-- <tr class="tabelaRegistros">
-              <th>#</th>
-              <th>Descrição</th>
-              <th>Detalhamento</th>
-              <th>Ações</th>
-            </tr> -->
-        </table>
-      </section>
+      <h1>SISTEMA DE RECADOS</h1>
+      <div class="container">
+        <section>
+          <form id="tabelaDinamica">
+            <legend id="legenda">
+              Painel de Recados de <span id="nameUser"></span>
+            </legend>
+            <label for="descricao"
+              ><input
+                type="text"
+                name="descrição"
+                maxlength="50"
+                id="descricao"
+                placeholder="descricao"
+              />
+            </label>
+            <label for="detalhamento"
+              ><input
+                type="text"
+                name="detalhamento"
+                id="detalhamento"
+                maxlength="50"
+                placeholder="detalhamento"
+            /></label>
+            <input type="submit" value="Salvar" />
+            <button id="logout">Sair</button>
+          </form>
+        </section>
+        <section>
+          <hr />
+          <!--  -->
+          <table class="table table-hover" id="tabelaRegistros">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Detalhamento</th>
+                <th scope="col">Ações</th>
+              </tr>
+            </thead>
+            <!-- Montagem da Tabela JS -->
+            <!-- <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>
+                  <button>Editar</button>
+                  <button>Salvar</button>
+                </td>
+              </tr>
+            </tbody> -->
+        </section>
+      </div>
     </main>
     <!-- JavaScript Bundle with Popper -->
     <script

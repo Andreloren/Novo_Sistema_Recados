@@ -22,12 +22,6 @@ interface Usuario {
   mensagens: Mensagens[];
 }
 
-type Mensagens = {
-  identificador: number;
-  descricao: string;
-  detalhamento: string;
-};
-
 function logarUsuario(): void {
   let usuarios = buscarUsuariosStorage(); //usuarios -> refere-se a um [] de usuario
 
