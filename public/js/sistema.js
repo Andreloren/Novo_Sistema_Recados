@@ -37,8 +37,8 @@ function cadastrarMensagens() {
 }
 function atualizarDadosUsuarioLogado(usuarioAtualizado) {
     let listaUsuarios = buscarTodosUsuariosStorage();
-    let IDUsuarioEncontrado = listaUsuarios.findIndex((usuario) => usuario.cpf === usuarioAtualizado.cpf);
-    listaUsuarios[IDUsuarioEncontrado] = usuarioAtualizado;
+    let IdUsuarioEncontrado = listaUsuarios.findIndex((usuario) => usuario.cpf === usuarioAtualizado.cpf);
+    listaUsuarios[IdUsuarioEncontrado] = usuarioAtualizado;
     atualizarStorage(listaUsuarios);
 }
 function atualizarStorage(listaDadosUsuario) {
@@ -47,6 +47,7 @@ function atualizarStorage(listaDadosUsuario) {
 function montarHTML(novasMensagens) {
     let corpo = document.createElement("tbody");
     let linha = document.createElement("tr");
+    linha.setAttribute("id", novasMensagens.identificador);
     let colunaID = document.createElement("th");
     colunaID.setAttribute("scope", "row");
     colunaID.innerHTML = novasMensagens.identificador;
@@ -71,4 +72,16 @@ function montarHTML(novasMensagens) {
     tabelaHTML.appendChild(corpo);
 }
 function editarMensagens(mensagem) { }
-function apagarMensagens(ID) { }
+function apagarMensagens(Id) {
+    let IdMensagemEncontrada = dadosUsuarioLogado.mensagens.findIndex((mensagem) => mensagem.identificador === Id);
+    let linhaExcluir = document.getElementById(Id);
+    let confirma = confirm(`Deseja excluir a mensagem ID ${Id}`);
+    if (confirma) {
+        linhaExcluir.remove();
+        dadosUsuarioLogado.mensagens.splice(IdMensagemEncontrada, 1);
+        atualizarDadosUsuarioLogado(dadosUsuarioLogado);
+    }
+    else {
+        alert("Operação Cancelada!");
+    }
+}
