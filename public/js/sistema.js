@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
     dadosUsuarioLogado = listaUsuarios.find((usuario) => usuario.cpf === IDUsuarioLogado);
     console.log(dadosUsuarioLogado);
     dadosUsuarioLogado.mensagens.forEach((mensagens) => montarHTML(mensagens));
+    let nomeSistema = document.getElementById("nameUser");
+    nomeSistema.innerHTML = `${dadosUsuarioLogado.nome}`;
 });
 formularioRecados.addEventListener("submit", (event) => {
     event.preventDefault();

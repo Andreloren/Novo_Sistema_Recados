@@ -42,6 +42,9 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log(dadosUsuarioLogado);
 
   dadosUsuarioLogado.mensagens.forEach((mensagens) => montarHTML(mensagens));
+
+  let nomeSistema = document.getElementById("nameUser") as HTMLSpanElement;
+  nomeSistema.innerHTML = `${dadosUsuarioLogado.nome}`;
 });
 
 formularioRecados.addEventListener("submit", (event) => {
