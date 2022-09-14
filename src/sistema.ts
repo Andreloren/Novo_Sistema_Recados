@@ -61,6 +61,8 @@ function cadastrarMensagens(): void {
   };
   dadosUsuarioLogado.mensagens.push(novaMensagem);
   atualizarDadosUsuarioLogado(dadosUsuarioLogado);
+  montarHTML(novaMensagem);
+  // formularioRecados.reset();
 }
 
 function atualizarDadosUsuarioLogado(usuarioAtualizado: Usuario): void {
@@ -97,11 +99,20 @@ function montarHTML(novasMensagens: Mensagens): void {
   botaoEditar.innerHTML = "Editar";
   botaoEditar.addEventListener("click", () => editarMensagens(novasMensagens));
 
-  let botaoSalvar = document.createElement("button");
-  botaoSalvar.innerHTML = "Salvar";
-  botaoSalvar.addEventListener("click", () =>
+  let botaoApagar = document.createElement("button");
+  botaoApagar.innerHTML = "Apagar";
+  botaoApagar.addEventListener("click", () =>
     apagarMensagens(novasMensagens.identificador)
   );
+
+  corpo.appendChild(linha);
+  linha.appendChild(colunaID);
+  linha.appendChild(colunaDesc);
+  linha.appendChild(colunaDet);
+  linha.appendChild(colunaAction);
+  colunaAction.appendChild(botaoEditar);
+  colunaAction.appendChild(botaoApagar);
+  tabelaHTML.appendChild(corpo);
 }
 
 function editarMensagens(mensagem: Mensagens): void {}
