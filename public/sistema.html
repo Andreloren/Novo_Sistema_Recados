@@ -17,39 +17,49 @@
   <body>
     <main>
       <div class="container">
-        <h1 class="text-center mt-5 mb-4">SISTEMA DE RECADOS</h1>
+        <h1 class="text-center mt-5 mb-4" style="color: #069dad">SISTEMA DE RECADOS</h1>
         <section>
-          <form id="tabelaDinamica">
-            <legend class="mb-4" id="legenda ">
-              Painel de Recados de <span class="" id="nameUser"></span>
+          <form id="tabelaDinamica" >
+            <legend class="mb-4" id="legenda" style="color: #069dad">
+              Painel de Recados de <span class="text-uppercase fw-semibold" id="nameUser"></span>
             </legend>
-            <label for="descricao"
-              ><input
-              class=""
+            <div class="needs-validation was-validated" novalidate="">
+              <label for="descricao validationCustomName1">
+              <input
+                class="form-control descricao"
                 type="text"
                 name="descrição"
-                maxlength="50"
-                id="descricao"
-                placeholder="descricao"
-              />
-            </label>
-            <label for="detalhamento"
-              ><input
+                aria-label="Sizing example input" 
+                aria-describedby="inputGroup-sizing-sm"
+                maxlength="42"
+                value=""
+                id="validationCustomName1"
+                placeholder="Descrição"
+                required
+              /></label>
+              <label for="detalhamento validationCustomName2">
+              <input
+                class="form-control detalhamento"
                 type="text"
                 name="detalhamento"
-                id="detalhamento"
-                maxlength="50"
-                placeholder="detalhamento"
-            /></label>
-            <input type="submit" value="Salvar" class="btn btn-success btn-sm" />
-            <button id="logout" class="btn btn-danger btn-sm" >Sair</button>
+                aria-label="Sizing example input" 
+                aria-describedby="inputGroup-sizing-sm"
+                id="validationCustomName2"
+                value=""
+                maxlength="42"
+                placeholder="Detalhamento"
+                required
+              /></label>
+              <input type="submit" value="Salvar" class="btn btn-outline-success mx-1 col-1 mb-1" />
+              <button id="logout" class="btn btn-outline-danger col-1 mx-1 mb-1" >Sair</button>
+            </div>
           </form>
         </section>
-        <section>
+        <section class="">
           <hr />
           <!--  -->
-          <table class="text-center table table-hover" id="tabelaRegistros">
-            <thead class="text-white" style="background-color: #069dad; ">
+          <table class="shadow bg-body rounded text-center table table-hover" id="tabelaRegistros">
+            <thead class="text-white" style="background-color: #069dad">
               <tr class="" >
                 <th scope="col">#ID</th>
                 <th scope="col">Descrição</th>

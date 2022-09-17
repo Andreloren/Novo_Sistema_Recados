@@ -1,6 +1,6 @@
 "use strict";
-let descricaoHTML = document.getElementById("descricao");
-let detalhamentoHTML = document.getElementById("detalhamento");
+let descricaoHTML = document.querySelector(".descricao");
+let detalhamentoHTML = document.querySelector(".detalhamento");
 let tabelaHTML = document.getElementById("tabelaRegistros");
 let formularioRecados = document.getElementById("tabelaDinamica");
 let dadosUsuarioLogado;

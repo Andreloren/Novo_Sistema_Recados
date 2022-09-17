@@ -1,6 +1,6 @@
-let descricaoHTML = document.getElementById("descricao") as HTMLInputElement;
-let detalhamentoHTML = document.getElementById(
-  "detalhamento"
+let descricaoHTML = document.querySelector(".descricao") as HTMLInputElement;
+let detalhamentoHTML = document.querySelector(
+  ".detalhamento"
 ) as HTMLInputElement;
 let tabelaHTML = document.getElementById("tabelaRegistros") as HTMLTableElement;
 
