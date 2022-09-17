@@ -60,9 +60,17 @@ function montarHTML(novasMensagens) {
     let colunaAction = document.createElement("td");
     let botaoEditar = document.createElement("button");
     botaoEditar.innerHTML = "Editar";
+    botaoEditar.classList.add("mx-1");
+    botaoEditar.classList.add("btn");
+    botaoEditar.classList.add("btn-info");
+    botaoEditar.classList.add("btn-sm");
     botaoEditar.addEventListener("click", () => editarMensagens(novasMensagens));
     let botaoApagar = document.createElement("button");
     botaoApagar.innerHTML = "Apagar";
+    botaoApagar.classList.add("mx-1");
+    botaoApagar.classList.add("btn");
+    botaoApagar.classList.add("btn-danger");
+    botaoApagar.classList.add("btn-sm");
     botaoApagar.addEventListener("click", () => apagarMensagens(novasMensagens.identificador));
     corpo.appendChild(linha);
     linha.appendChild(colunaId);

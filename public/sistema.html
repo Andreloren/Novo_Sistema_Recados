@@ -16,15 +16,16 @@
   </head>
   <body>
     <main>
-      <h1>SISTEMA DE RECADOS</h1>
       <div class="container">
+        <h1 class="text-center mt-5 mb-4">SISTEMA DE RECADOS</h1>
         <section>
           <form id="tabelaDinamica">
-            <legend id="legenda">
-              Painel de Recados de <span id="nameUser"></span>
+            <legend class="mb-4" id="legenda ">
+              Painel de Recados de <span class="" id="nameUser"></span>
             </legend>
             <label for="descricao"
               ><input
+              class=""
                 type="text"
                 name="descrição"
                 maxlength="50"
@@ -40,34 +41,23 @@
                 maxlength="50"
                 placeholder="detalhamento"
             /></label>
-            <input type="submit" value="Salvar" />
-            <button id="logout">Sair</button>
+            <input type="submit" value="Salvar" class="btn btn-success btn-sm" />
+            <button id="logout" class="btn btn-danger btn-sm" >Sair</button>
           </form>
         </section>
         <section>
           <hr />
           <!--  -->
-          <table class="table table-hover" id="tabelaRegistros">
-            <thead>
-              <tr>
+          <table class="text-center table table-hover" id="tabelaRegistros">
+            <thead class="text-white" style="background-color: #069dad; ">
+              <tr class="" >
                 <th scope="col">#ID</th>
                 <th scope="col">Descrição</th>
                 <th scope="col">Detalhamento</th>
                 <th scope="col">Ações</th>
               </tr>
             </thead>
-            <!-- Montagem da Tabela JS -->
-            <!-- <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>
-                  <button>Editar</button>
-                  <button>Salvar</button>
-                </td>
-              </tr>
-            </tbody> -->
+            
         </section>
       </div>
     </main>
