@@ -16,13 +16,83 @@
   </head>
   <body>
     <main>
-      <div class="container">
+      <div class="container" >
         <h1 class="text-center mt-5 mb-4" style="color: #069dad">SISTEMA DE RECADOS</h1>
+
+        <!-- <div class="w-50 p-3" id="liveAlertPlaceholder"></div> -->
+        
         <section>
-          <form id="tabelaDinamica" >
+          <form id="tabelaDinamica">
             <legend class="mb-4" id="legenda" style="color: #069dad">
               Painel de Recados de <span class="text-uppercase fw-semibold" id="nameUser"></span>
             </legend>
+<!-- COMEÇA MODAL EDIÇÃO -->
+            <div
+            class="modal fade"
+            id="staticBackdrop"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">
+                    Confirma alteração dos dados?
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  Ao executar esta ação, a mesma não poderá ser alterada.
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    data-bs-dismiss="modal"
+                    id="liveAlertBtn"
+                  >
+                    Sim
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    data-bs-dismiss="modal"
+                    id="liveAlertBtnC"
+                  >
+                    Não
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+<!-- ACABA MODAL EDIÇÃO -->
+<!-- COMEÇA MODAL EXCLUSÃO -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Confirmar exclusão de dados?</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div  class="modal-body">
+                  Ao executar esta ação, a mesma não poderá ser revertida.
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="confirmaExclusao">Sim</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Não</button>
+                </div>
+              </div>
+            </div>
+          </div>
+<!-- ACABA MODAL EXCLUSÃO -->
             <div class="needs-validation was-validated" novalidate="">
               <label for="descricao validationCustomName1">
               <input
