@@ -2,3 +2,18 @@
   display: none;
 }
 /* color: #007a87 */
+
+#botaoAcessar {
+  background-color: #069dad;
+  border-color: #069dad;
+}
+#botaoAcessar:hover {
+  background-color: #007a87;
+}
+#botaoCadastrar {
+  background-color: #069dad;
+  border-color: #069dad;
+}
+#botaoCadastrar:hover {
+  background-color: #007a87;
+}

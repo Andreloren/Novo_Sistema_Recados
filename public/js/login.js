@@ -1,8 +1,8 @@
 "use strict";
 // Parte de Logar Usuario
-let cpfLogin = document.getElementById("cpfLogin");
-let senhaLogin = document.getElementById("senhaLogin");
-let botaoLogin = document.getElementById("botaoAcessar");
+let cpfLogin = document.querySelector(".cpfLogin");
+let senhaLogin = document.querySelector(".senhaLogin");
+let botaoLogin = document.querySelector("#botaoAcessar");
 botaoLogin.addEventListener("click", (e) => {
     e.preventDefault();
     logarUsuario();
@@ -31,8 +31,8 @@ function logarUsuario() {
     resetLogin();
 }
 // Parte do CPF Usuario
-let cpfHTML = document.getElementById("cpfCadastro");
-const botaoCPF = document.getElementById("botaoCadastrar");
+let cpfHTML = document.querySelector(".cpfCadastro");
+const botaoCPF = document.querySelector("#botaoCadastrar");
 let aparecerModal = document.getElementById("modal");
 let mostrarCPFHTML = document.getElementById("cpfCadastro2");
 botaoCPF.addEventListener("click", (ev) => {
@@ -49,14 +49,14 @@ function validarCPF() {
         return;
     }
     // aprender a como retirar caracter especial
-    if (!cpfHTML.value) {
-        alert("Necessário digitar um CPF");
-        return esconderModal();
-    }
-    if (cpfHTML.value.length !== 11) {
-        alert("Favor digitar cpf com 11 digitos");
-        return esconderModal();
-    }
+    // if (!cpfHTML.value) {
+    //   alert("Necessário digitar um CPF");
+    //   return esconderModal();
+    // }
+    // if (cpfHTML.value.length !== 11) {
+    //   alert("Favor digitar cpf com 11 digitos");
+    //   return esconderModal();
+    // }
     mostrarModal();
 }
 //Inicio Modal

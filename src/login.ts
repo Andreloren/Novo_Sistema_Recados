@@ -1,9 +1,9 @@
 // Parte de Logar Usuario
 
-let cpfLogin = document.getElementById("cpfLogin") as HTMLInputElement;
-let senhaLogin = document.getElementById("senhaLogin") as HTMLInputElement;
+let cpfLogin = document.querySelector(".cpfLogin") as HTMLInputElement;
+let senhaLogin = document.querySelector(".senhaLogin") as HTMLInputElement;
 
-let botaoLogin = document.getElementById("botaoAcessar") as HTMLButtonElement;
+let botaoLogin = document.querySelector("#botaoAcessar") as HTMLButtonElement;
 botaoLogin.addEventListener("click", (e) => {
   e.preventDefault();
   logarUsuario();
@@ -49,8 +49,8 @@ function logarUsuario(): void {
 
 // Parte do CPF Usuario
 
-let cpfHTML = document.getElementById("cpfCadastro") as HTMLInputElement;
-const botaoCPF = document.getElementById("botaoCadastrar") as HTMLButtonElement;
+let cpfHTML = document.querySelector(".cpfCadastro") as HTMLInputElement;
+const botaoCPF = document.querySelector("#botaoCadastrar") as HTMLButtonElement;
 let aparecerModal = document.getElementById("modal") as HTMLDivElement;
 let mostrarCPFHTML = document.getElementById(
   "cpfCadastro2"
@@ -68,20 +68,21 @@ function validarCPF(): void {
   let existeCPF = cpfExiste.some(
     (cpfExistente) => cpfExistente.cpf === cpfHTML.value
   );
+
   if (existeCPF) {
     alert("CPF já cadastrado no sistema");
     resetCPF();
     return;
   }
   // aprender a como retirar caracter especial
-  if (!cpfHTML.value) {
-    alert("Necessário digitar um CPF");
-    return esconderModal();
-  }
-  if (cpfHTML.value.length !== 11) {
-    alert("Favor digitar cpf com 11 digitos");
-    return esconderModal();
-  }
+  // if (!cpfHTML.value) {
+  //   alert("Necessário digitar um CPF");
+  //   return esconderModal();
+  // }
+  // if (cpfHTML.value.length !== 11) {
+  //   alert("Favor digitar cpf com 11 digitos");
+  //   return esconderModal();
+  // }
   mostrarModal();
 }
 

@@ -4,8 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- CSS only -->
-    <!-- CSS only -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -17,51 +15,112 @@
   </head>
   <body>
     <main>
-      <h1>PÁGINA DE LOGIN</h1>
-      <form id="formularioLogin">
-        <fieldset id="caixaLogin">
-          <legend id="tituloLogin">JÁ POSSUI CADASTRO?</legend>
-          <h4>Para entrar informe um CPF e Senha válidos.</h4>
-          <label for="cpfLogin">*CPF</label>
-          <input type="text" id="cpfLogin" placeholder="CPF" />
+      <div class="container" id="container">
+        <h1 class="text-center mt-5 mb-5" style="color: #069dad">
+          SISTEMA DE RECADOS
+        </h1>
+        <div class="row border pt-2 mt-5 mx-auto">
+          <h4 class="col-12 mb-4" style="color: #069dad">
+            Acesso ao Portal de Recados
+          </h4>
+          <div class="row">
 
-          <label for="senhaLogin">*Senha</label>
-          <input type="text" id="senhaLogin" placeholder="Senha" />
-          <button id="botaoAcessar">ACESSAR CONTA</button>
-        </fieldset>
-      </form>
+            <form class="col-5 border mt-3 mb-5 me-1 ms-auto" id="formularioLogin">
+              <fieldset id="caixaLogin" class="row">
+                <p class="fw-bolder" id="tituloLogin" style="color: #069dad">
+                  Já possui cadastro?
+                </p>
+                <p class="">
+                  Para entrar informe CPF e Senha cadastrados.
+                </p>
+                <div class="needs-validation was-validated" novalidate="">
+                  <div class="form-floating mb-3">
+                  <input
+                    class="form-control cpfLogin"
+                    type="text"
+                    id="floatingName validationCustomName"
+                    placeholder="CPF"
+                    required
+                    value=""
+                    minlength="11"
+                    maxlength="11"
+                  />
+                  <label class="form-label" for="cpfLogin floatingName validationCustomName">*CPF</label>
+                  <div class="needs-validation was-validated" novalidate="">
+                    <div class="form-floating mb-3">
+                    <input
+                      class="form-control senhaLogin"
+                      type="text"
+                      id="floatingPass validationCustomPass"
+                      placeholder="Senha"
+                      required
+                      value=""
+                      minlength="5"
+                    />
+                    <label class="form-label" for="senhaLogin floatingPass validationCustomPass">*Senha</label>
+                    </div>
+                  </div>
+                  <div>
+                    <button class="btn btn-primary mx-1 mb-1" id="botaoAcessar">ACESSAR CONTA</button>
+                  </div>
+              </div>
+              </fieldset>
+            </form>
 
-      <form id="formularioCadastro">
-        <fieldset id="caixaCadastro">
-          <legend id="tituloCadastro">NÃO POSSUI CADASTRO?</legend>
-          <h4>Crie sua conta!</h4>
-          <label for="cpfCadastro">*CPF</label>
-          <input type="text" id="cpfCadastro" placeholder="CPF" />
-          <button id="botaoCadastrar">INICIAR CADASTRO</button>
-        </fieldset>
-      </form>
-      <!-- MODAL DE CADASTRO -->
-      <div id="modal">
-        <h3>Complete seu Cadastro</h3>
+            <form
+              class="col-5 border mt-3 mb-5 me-auto ms-1"
+              id="formularioCadastro"
+            >
+              <fieldset id="caixaCadastro">
+                <p class="fw-bolder" id="tituloCadastro" style="color: #069dad">
+                  Não possui cadastro?
+                </p>
+                <p>Crie sua conta!</p>
+                <div class="needs-validation was-validated" novalidate="">
+                  <div class="form-floating mb-3">
+                    <input
+                      class="form-control cpfCadastro"
+                      type="text"
+                      id="floatingName validationCustomName"
+                      placeholder="CPF"
+                      value=""
+                      required
+                      minlength="11"
+                      maxlength="11"
+                    />
+                    <label
+                      for="cpfCadastro floatingName validationCustomName"
+                      class="form-label"
+                    >*CPF</label
+                    >
+                  </div>
+                </div>
+                <button id="botaoCadastrar" class="btn btn-primary mx-1 mb-1">INICIAR CADASTRO</button>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+        <!-- MODAL DE CADASTRO -->
+        <div id="modal">
+          <h3>Complete seu Cadastro</h3>
 
-        <h4>Identificamos você, favor completar cadastro.</h4>
+          <h4>Identificamos você, favor completar cadastro.</h4>
 
-        <form id="modalCadastro">
-          <label for="nomeCadastro">*Nome Completo</label>
-          <input type="text" id="nomeCadastro" />
-          <p id="cpfCadastro2"></p>
-          <label for="emailCadastro">*E-mail</label>
-          <input type="email" id="emailCadastro" />
-          <label for="senhaCadastro">*Senha</label>
-          <input type="text" id="senhaCadastro" />
-          <label for="senhaConfirm">*Confirmação de Senha</label>
-          <input type="text" id="senhaConfirm" />
-          <input type="submit" value="Cadastrar Novo Usuário" />
-        </form>
+          <form id="modalCadastro">
+            <label for="nomeCadastro">*Nome Completo</label>
+            <input type="text" id="nomeCadastro" />
+            <p id="cpfCadastro2"></p>
+            <label for="emailCadastro">*E-mail</label>
+            <input type="email" id="emailCadastro" />
+            <label for="senhaCadastro">*Senha</label>
+            <input type="text" id="senhaCadastro" />
+            <label for="senhaConfirm">*Confirmação de Senha</label>
+            <input type="text" id="senhaConfirm" />
+            <input type="submit" value="Cadastrar Novo Usuário" />
+          </form>
+        </div>
       </div>
     </main>
-    <!-- JavaScript Bundle with Popper -->
-    <!-- JavaScript Bundle with Popper -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
