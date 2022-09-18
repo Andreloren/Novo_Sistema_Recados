@@ -3,12 +3,31 @@ let descricaoHTML = document.querySelector(".descricao");
 let detalhamentoHTML = document.querySelector(".detalhamento");
 let tabelaHTML = document.getElementById("tabelaRegistros");
 let formularioRecados = document.getElementById("tabelaDinamica");
+let botaoSair = document.getElementById("logout");
+botaoSair.addEventListener("click", () => {
+    localStorage.removeItem("usuarioLogado");
+    sair();
+});
+function sair() {
+    return (window.location.href = "login.html");
+}
 let dadosUsuarioLogado;
 document.addEventListener("DOMContentLoaded", () => {
     let IDUsuarioLogado = localStorage.getItem("usuarioLogado");
+    // const botaoDeslogado = document.getElementById(
+    //   "usuarioDeslogado"
+    // ) as HTMLButtonElement;
+    // let divDesl = document.getElementById("container") as HTMLDivElement;
+    // let deslogado = document.getElementById("deslogado") as HTMLDivElement;
+    // divDesl.appendChild(deslogado);
     if (!IDUsuarioLogado) {
-        alert("Necessário estar logado para acessar a página");
+        alert("rala");
+        // deslogado.innerHTML;
+        // botaoDeslogado.addEventListener("click", () => {
         window.location.href = "login.html";
+        //   return;
+        // });
+        // alert("Necessário estar logado para acessar a página");
     }
     let listaUsuarios = buscarTodosUsuariosStorage();
     console.log(listaUsuarios);
@@ -174,7 +193,6 @@ function apagarMensagens(Id) {
         atualizarDadosUsuarioLogado(dadosUsuarioLogado);
     });
 }
-function modalExclusao() { }
 function modalConfirmacao() {
     const div1 = document.createElement("div");
     div1.classList.add("w-50");

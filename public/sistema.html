@@ -16,7 +16,7 @@
   </head>
   <body>
     <main>
-      <div class="container" >
+      <div class="container" id="container">
         <h1 class="text-center mt-5 mb-4" style="color: #069dad">SISTEMA DE RECADOS</h1>
 
         <!-- <div class="w-50 p-3" id="liveAlertPlaceholder"></div> -->
@@ -93,6 +93,24 @@
             </div>
           </div>
 <!-- ACABA MODAL EXCLUSÃO -->
+          <!--INICIO MODAL DESLOGADO-->
+          <div id="deslogado" class="modal" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Nenhum Usuário Logado</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>Necessário realizar login para acessar esta página.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" id="usuarioDeslogado" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- FINAL MODAL DESLOGADO -->
             <div class="needs-validation was-validated" novalidate="">
               <label for="descricao validationCustomName1">
               <input
@@ -127,7 +145,7 @@
         </section>
         <section class="">
           <hr />
-          <!--  -->
+
           <table class="shadow bg-body rounded text-center table table-hover" id="tabelaRegistros">
             <thead class="text-white" style="background-color: #069dad">
               <tr class="" >

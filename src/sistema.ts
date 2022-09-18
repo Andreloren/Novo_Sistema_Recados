@@ -8,6 +8,15 @@ let formularioRecados = document.getElementById(
   "tabelaDinamica"
 ) as HTMLFormElement;
 
+let botaoSair = document.getElementById("logout") as HTMLButtonElement;
+
+botaoSair.addEventListener("click", () => {
+  localStorage.removeItem("usuarioLogado");
+  sair();
+});
+function sair() {
+  return (window.location.href = "login.html");
+}
 interface Usuario {
   nome: string;
   cpf: string;
@@ -27,9 +36,23 @@ let dadosUsuarioLogado: Usuario;
 document.addEventListener("DOMContentLoaded", () => {
   let IDUsuarioLogado = localStorage.getItem("usuarioLogado");
 
+  // const botaoDeslogado = document.getElementById(
+  //   "usuarioDeslogado"
+  // ) as HTMLButtonElement;
+
+  // let divDesl = document.getElementById("container") as HTMLDivElement;
+
+  // let deslogado = document.getElementById("deslogado") as HTMLDivElement;
+  // divDesl.appendChild(deslogado);
+
   if (!IDUsuarioLogado) {
-    alert("Necessário estar logado para acessar a página");
+    alert("rala");
+    // deslogado.innerHTML;
+    // botaoDeslogado.addEventListener("click", () => {
     window.location.href = "login.html";
+    //   return;
+    // });
+    // alert("Necessário estar logado para acessar a página");
   }
 
   let listaUsuarios = buscarTodosUsuariosStorage();
@@ -229,8 +252,6 @@ function apagarMensagens(Id: string): void {
     atualizarDadosUsuarioLogado(dadosUsuarioLogado);
   });
 }
-
-function modalExclusao(): void {}
 
 function modalConfirmacao(): void {
   const div1 = document.createElement("div");
