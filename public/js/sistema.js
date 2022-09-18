@@ -35,7 +35,7 @@ function cadastrarMensagens() {
     dadosUsuarioLogado.mensagens.push(novaMensagem);
     atualizarDadosUsuarioLogado(dadosUsuarioLogado);
     montarHTML(novaMensagem);
-    // formularioRecados.reset();
+    formularioRecados.reset();
 }
 function atualizarDadosUsuarioLogado(usuarioAtualizado) {
     let listaUsuarios = buscarTodosUsuariosStorage();

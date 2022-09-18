@@ -65,7 +65,7 @@ function cadastrarMensagens(): void {
   dadosUsuarioLogado.mensagens.push(novaMensagem);
   atualizarDadosUsuarioLogado(dadosUsuarioLogado);
   montarHTML(novaMensagem);
-  // formularioRecados.reset();
+  formularioRecados.reset();
 }
 
 function atualizarDadosUsuarioLogado(usuarioAtualizado: Usuario): void {
