@@ -1,8 +1,33 @@
-#modal {
-  display: none;
+.container-login {
+  height: 460px;
+  width: 768px;
+  box-shadow: 0 5px 10px #007a87;
 }
-/* color: #007a87 */
 
+.cpfLogin,
+.senhaLogin,
+.nomeCadastro,
+.cpfCadastro,
+.emailCadastro,
+.senhaCadastro,
+.senhaConfirm {
+  background-color: #f3f3f3;
+}
+
+#botaoParaAcesso {
+  border-color: #069dad;
+}
+
+#botaoParaAcesso:hover {
+  background-color: #069dad;
+}
+#botaoGravar {
+  background-color: #069dad;
+  border-color: #069dad;
+}
+#botaoGravar:hover {
+  background-color: #007a87;
+}
 #botaoAcessar {
   background-color: #069dad;
   border-color: #069dad;
@@ -10,10 +35,81 @@
 #botaoAcessar:hover {
   background-color: #007a87;
 }
-#botaoCadastrar {
+#botaoCadastrar,
+#botaoEntrar {
   background-color: #069dad;
   border-color: #069dad;
 }
-#botaoCadastrar:hover {
+#botaoCadastrar:hover,
+#botaoEntrar:hover {
   background-color: #007a87;
+}
+.overlay {
+  top: 0;
+  left: 0;
+  transform: translateX(103%);
+  transition: 1s;
+  z-index: 99999;
+}
+
+#overTwo,
+#overOne {
+  background-color: #069dad;
+}
+
+.troca .overlay {
+  transform: translateX(0%);
+  transition: 1s;
+}
+
+.troca #overTwo {
+  z-index: -1;
+  /* opacity: 0; */
+}
+
+.troca #formularioLogin {
+  transform: translateX(100%);
+  z-index: -1;
+  opacity: 0;
+}
+
+#formularioLogin {
+  transform: translateX(0%);
+  z-index: 1;
+  opacity: 1;
+  transition: 1s;
+}
+
+#modalCadastro {
+  transform: translateX(-100%);
+  z-index: -1;
+  opacity: 0;
+  transition: 1s;
+}
+
+.troca #modalCadastro {
+  transform: translateX(0%);
+  z-index: 1;
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .container-login {
+    box-shadow: none;
+  }
+  #modalCadastro {
+    position: absolute;
+    transform: translateX(100%);
+    height: 100vh;
+  }
+  #formularioLogin {
+    position: absolute;
+    transform: translateX(0%);
+  }
+  .container-login .troca #formularioLogin {
+    transform: translateX(100%);
+  }
+  .container-login .troca #modalCadastro {
+    transform: translateX(0%);
+  }
 }

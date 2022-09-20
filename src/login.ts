@@ -49,59 +49,57 @@ function logarUsuario(): void {
 
 // Parte do CPF Usuario
 
-let cpfHTML = document.querySelector(".cpfCadastro") as HTMLInputElement;
-const botaoCPF = document.querySelector("#botaoCadastrar") as HTMLButtonElement;
-let aparecerModal = document.getElementById("modal") as HTMLDivElement;
-let mostrarCPFHTML = document.getElementById(
-  "cpfCadastro2"
-) as HTMLParagraphElement;
+// const botaoCPF = document.querySelector("#botaoCadastrar") as HTMLButtonElement;
+let aparecerModal = document.getElementById(".esteModal") as HTMLDivElement;
+let mostrarCPFHTML = document.querySelector(
+  ".cpfCadastro2"
+) as HTMLInputElement;
 
-botaoCPF.addEventListener("click", (ev) => {
-  ev.preventDefault();
-  validarCPF();
-  mostrarCPFHTML.innerText = `CPF: ${cpfHTML.value}`;
-});
+// botaoCPF.addEventListener("click", (ev) => {
+//   ev.preventDefault();
+//   validarCPF();
+// });
 
 function validarCPF(): void {
-  let cpfExiste = buscarUsuariosStorage();
-
-  let existeCPF = cpfExiste.some(
-    (cpfExistente) => cpfExistente.cpf === cpfHTML.value
-  );
-
-  if (existeCPF) {
-    alert("CPF já cadastrado no sistema");
-    resetCPF();
-    return;
-  }
-  // aprender a como retirar caracter especial
+  // let cpfExiste = buscarUsuariosStorage();
+  // let existeCPF = cpfExiste.some(
+  //   (cpfExistente) => cpfExistente.cpf === cpfHTML.value
+  // );
+  // if (existeCPF) {
+  //   alert("CPF já cadastrado no sistema");
+  //   resetCPF();
+  //   return;
+  // }
+  // // aprender a como retirar caracter especial
   // if (!cpfHTML.value) {
   //   alert("Necessário digitar um CPF");
-  //   return esconderModal();
+  //   return;
   // }
   // if (cpfHTML.value.length !== 11) {
   //   alert("Favor digitar cpf com 11 digitos");
-  //   return esconderModal();
+  //   return;
   // }
-  mostrarModal();
+  // botaoCPF.setAttribute("data-bs-toggle", "modal");
 }
 
 //Inicio Modal
-let nomeCadastroHTML = document.getElementById(
-  "nomeCadastro"
+let nomeCadastroHTML = document.querySelector(
+  ".nomeCadastro"
 ) as HTMLInputElement;
-let emailCadastroHTML = document.getElementById(
-  "emailCadastro"
+let emailCadastroHTML = document.querySelector(
+  ".emailCadastro"
 ) as HTMLInputElement;
-let senhaCadastroHTML = document.getElementById(
-  "senhaCadastro"
+let cpfHTML = document.querySelector(".cpfCadastro") as HTMLInputElement;
+let senhaCadastroHTML = document.querySelector(
+  ".senhaCadastro"
 ) as HTMLInputElement;
-let senhaCadastroConfirmHTML = document.getElementById(
-  "senhaConfirm"
+let senhaCadastroConfirmHTML = document.querySelector(
+  ".senhaConfirm"
 ) as HTMLInputElement;
+let mostrarModal = document.querySelector("esteModal") as HTMLDivElement;
 
-let formularioCadastro = document.getElementById(
-  "modalCadastro"
+let formularioCadastro = document.querySelector(
+  "#modalCadastro"
 ) as HTMLFormElement;
 
 formularioCadastro.addEventListener("submit", (event) => {
@@ -114,32 +112,55 @@ formularioCadastro.addEventListener("submit", (event) => {
   }
 
   cadastrarUsuario();
-  //esconderModal();
+
+  formularioCadastro.reset();
+  resetCPF();
+  // mostrarModal.()
 });
+// Inicio Troca Telas
 
-function mostrarModal(): void {
-  aparecerModal.style.display = "block";
-}
+const loginContainer = document.querySelector(
+  "#container-login"
+) as HTMLDivElement;
 
-function esconderModal(): void {
-  aparecerModal.style.display = "none";
-}
+const moveOverlay = () => loginContainer.classList.toggle("troca");
+
+const botaoCadastrar = document.querySelector(
+  "#botaoCadastrar"
+) as HTMLButtonElement;
+botaoCadastrar.addEventListener("click", moveOverlay);
+
+const botaoEntrar = document.querySelector("#botaoEntrar") as HTMLButtonElement;
+botaoEntrar.addEventListener("click", moveOverlay);
+
+const openLog = document.querySelector("#openLoginMobile") as HTMLElement;
+const openCad = document.querySelector("#openCadastroMobile") as HTMLElement;
+openLog.addEventListener("click", moveOverlay);
+openCad.addEventListener("click", moveOverlay);
+// function mostrarModal(): void {
+//   aparecerModal.style.display = "block";
+// }
+
+// function esconderModal(): void {
+//   aparecerModal.style.display = "none";
+// }
 
 function validarCampos(): Boolean {
-  if (
-    nomeCadastroHTML.value === "" ||
-    emailCadastroHTML.value === "" ||
-    senhaCadastroHTML.value === "" ||
-    senhaCadastroConfirmHTML.value === ""
-  ) {
-    alert("Campos em Branco");
-    return false;
-  }
+  // if (
+  //   nomeCadastroHTML.value === "" ||
+  //   emailCadastroHTML.value === "" ||
+  //   cpfHTML.value === "" ||
+  //   senhaCadastroHTML.value === "" ||
+  //   senhaCadastroConfirmHTML.value === ""
+  // ) {
+  //   alert("Campos em Branco");
+  //   return false;
+  // }
 
-  if (senhaCadastroHTML.value.length < 5) {
-    alert("Digite no minimo 5 caracteres");
-    return false;
-  }
+  // if (senhaCadastroHTML.value.length < 5) {
+  //   alert("Digite no minimo 5 caracteres");
+  //   return false;
+  // }
 
   if (senhaCadastroHTML.value !== senhaCadastroConfirmHTML.value) {
     alert("Senhas divergentes");
@@ -171,8 +192,8 @@ function cadastrarUsuario() {
 
   listaDeUsuarios.push(novoUsuario);
   salvarUsuarioStorage(listaDeUsuarios);
-  resetNovoUsuario();
-  resetCPF();
+  // esconderModal();
+  // resetNovoUsuario();
 }
 
 function buscarUsuariosStorage(): Usuario[] {
@@ -203,5 +224,4 @@ function resetNovoUsuario(): void {
   emailCadastroHTML.value === "";
   senhaCadastroHTML.value === "";
   senhaCadastroConfirmHTML.value === "";
-  esconderModal();
 }

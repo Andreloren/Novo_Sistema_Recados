@@ -137,6 +137,8 @@ function montarHTML(novasMensagens) {
     botaoCancelarEditar.classList.add("d-none");
     botaoCancelarEditar.addEventListener("click", () => {
         cancelarCamposEdicao();
+        inputDet.value = novasMensagens.detalhamento;
+        inputDesc.value = novasMensagens.descricao;
     });
     corpo.appendChild(linha);
     linha.appendChild(colunaId);

@@ -31,40 +31,42 @@ function logarUsuario() {
     resetLogin();
 }
 // Parte do CPF Usuario
-let cpfHTML = document.querySelector(".cpfCadastro");
-const botaoCPF = document.querySelector("#botaoCadastrar");
-let aparecerModal = document.getElementById("modal");
-let mostrarCPFHTML = document.getElementById("cpfCadastro2");
-botaoCPF.addEventListener("click", (ev) => {
-    ev.preventDefault();
-    validarCPF();
-    mostrarCPFHTML.innerText = `CPF: ${cpfHTML.value}`;
-});
+// const botaoCPF = document.querySelector("#botaoCadastrar") as HTMLButtonElement;
+let aparecerModal = document.getElementById(".esteModal");
+let mostrarCPFHTML = document.querySelector(".cpfCadastro2");
+// botaoCPF.addEventListener("click", (ev) => {
+//   ev.preventDefault();
+//   validarCPF();
+// });
 function validarCPF() {
-    let cpfExiste = buscarUsuariosStorage();
-    let existeCPF = cpfExiste.some((cpfExistente) => cpfExistente.cpf === cpfHTML.value);
-    if (existeCPF) {
-        alert("CPF já cadastrado no sistema");
-        resetCPF();
-        return;
-    }
-    // aprender a como retirar caracter especial
+    // let cpfExiste = buscarUsuariosStorage();
+    // let existeCPF = cpfExiste.some(
+    //   (cpfExistente) => cpfExistente.cpf === cpfHTML.value
+    // );
+    // if (existeCPF) {
+    //   alert("CPF já cadastrado no sistema");
+    //   resetCPF();
+    //   return;
+    // }
+    // // aprender a como retirar caracter especial
     // if (!cpfHTML.value) {
     //   alert("Necessário digitar um CPF");
-    //   return esconderModal();
+    //   return;
     // }
     // if (cpfHTML.value.length !== 11) {
     //   alert("Favor digitar cpf com 11 digitos");
-    //   return esconderModal();
+    //   return;
     // }
-    mostrarModal();
+    // botaoCPF.setAttribute("data-bs-toggle", "modal");
 }
 //Inicio Modal
-let nomeCadastroHTML = document.getElementById("nomeCadastro");
-let emailCadastroHTML = document.getElementById("emailCadastro");
-let senhaCadastroHTML = document.getElementById("senhaCadastro");
-let senhaCadastroConfirmHTML = document.getElementById("senhaConfirm");
-let formularioCadastro = document.getElementById("modalCadastro");
+let nomeCadastroHTML = document.querySelector(".nomeCadastro");
+let emailCadastroHTML = document.querySelector(".emailCadastro");
+let cpfHTML = document.querySelector(".cpfCadastro");
+let senhaCadastroHTML = document.querySelector(".senhaCadastro");
+let senhaCadastroConfirmHTML = document.querySelector(".senhaConfirm");
+let mostrarModal = document.querySelector("esteModal");
+let formularioCadastro = document.querySelector("#modalCadastro");
 formularioCadastro.addEventListener("submit", (event) => {
     event.preventDefault();
     let retornoValidacao = validarCampos();
@@ -72,26 +74,42 @@ formularioCadastro.addEventListener("submit", (event) => {
         return;
     }
     cadastrarUsuario();
-    //esconderModal();
+    formularioCadastro.reset();
+    resetCPF();
+    // mostrarModal.()
 });
-function mostrarModal() {
-    aparecerModal.style.display = "block";
-}
-function esconderModal() {
-    aparecerModal.style.display = "none";
-}
+// Inicio Troca Telas
+const loginContainer = document.querySelector("#container-login");
+const moveOverlay = () => loginContainer.classList.toggle("troca");
+const botaoCadastrar = document.querySelector("#botaoCadastrar");
+botaoCadastrar.addEventListener("click", moveOverlay);
+const botaoEntrar = document.querySelector("#botaoEntrar");
+botaoEntrar.addEventListener("click", moveOverlay);
+const openLog = document.querySelector("#openLoginMobile");
+const openCad = document.querySelector("#openCadastroMobile");
+openLog.addEventListener("click", moveOverlay);
+openCad.addEventListener("click", moveOverlay);
+// function mostrarModal(): void {
+//   aparecerModal.style.display = "block";
+// }
+// function esconderModal(): void {
+//   aparecerModal.style.display = "none";
+// }
 function validarCampos() {
-    if (nomeCadastroHTML.value === "" ||
-        emailCadastroHTML.value === "" ||
-        senhaCadastroHTML.value === "" ||
-        senhaCadastroConfirmHTML.value === "") {
-        alert("Campos em Branco");
-        return false;
-    }
-    if (senhaCadastroHTML.value.length < 5) {
-        alert("Digite no minimo 5 caracteres");
-        return false;
-    }
+    // if (
+    //   nomeCadastroHTML.value === "" ||
+    //   emailCadastroHTML.value === "" ||
+    //   cpfHTML.value === "" ||
+    //   senhaCadastroHTML.value === "" ||
+    //   senhaCadastroConfirmHTML.value === ""
+    // ) {
+    //   alert("Campos em Branco");
+    //   return false;
+    // }
+    // if (senhaCadastroHTML.value.length < 5) {
+    //   alert("Digite no minimo 5 caracteres");
+    //   return false;
+    // }
     if (senhaCadastroHTML.value !== senhaCadastroConfirmHTML.value) {
         alert("Senhas divergentes");
         return false;
@@ -114,8 +132,8 @@ function cadastrarUsuario() {
     };
     listaDeUsuarios.push(novoUsuario);
     salvarUsuarioStorage(listaDeUsuarios);
-    resetNovoUsuario();
-    resetCPF();
+    // esconderModal();
+    // resetNovoUsuario();
 }
 function buscarUsuariosStorage() {
     return JSON.parse(localStorage.getItem("usuarios") || "[]");
@@ -140,5 +158,4 @@ function resetNovoUsuario() {
     emailCadastroHTML.value === "";
     senhaCadastroHTML.value === "";
     senhaCadastroConfirmHTML.value === "";
-    esconderModal();
 }
