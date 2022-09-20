@@ -289,7 +289,7 @@ function modalConfirmacao(): void {
     alertPlaceholder.append(wrapper);
     setTimeout(() => {
       div1.remove();
-    }, 2000);
+    }, 1000);
   };
 
   const alertTrigger = document.getElementById("liveAlertBtn");
@@ -304,6 +304,9 @@ function modalConfirmacao(): void {
   if (alertTriggerC) {
     alertTriggerC.addEventListener("click", () => {
       alert("Alteração de dados cancelada.", "danger");
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
     });
   }
 }

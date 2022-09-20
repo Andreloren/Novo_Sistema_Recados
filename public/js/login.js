@@ -15,14 +15,13 @@ document.addEventListener("DOMContentLoaded", () => {
 function logarUsuario() {
     let usuarios = buscarUsuariosStorage(); //usuarios -> refere-se a um [] de usuario
     if (!cpfLogin.value || !senhaLogin.value) {
-        alert("Dados em branco");
+        alert("Dados em Branco ou Divergentes");
         resetLogin();
         return;
     }
     let usuarioAchado = usuarios.find((valor) => valor.cpf === cpfLogin.value && valor.senha === senhaLogin.value);
     if (!usuarioAchado) {
         alert("CPF ou Senha divergentes");
-        //melhorar
         resetLogin();
         return;
     }
@@ -30,35 +29,8 @@ function logarUsuario() {
     login();
     resetLogin();
 }
-// Parte do CPF Usuario
-// const botaoCPF = document.querySelector("#botaoCadastrar") as HTMLButtonElement;
 let aparecerModal = document.getElementById(".esteModal");
 let mostrarCPFHTML = document.querySelector(".cpfCadastro2");
-// botaoCPF.addEventListener("click", (ev) => {
-//   ev.preventDefault();
-//   validarCPF();
-// });
-function validarCPF() {
-    // let cpfExiste = buscarUsuariosStorage();
-    // let existeCPF = cpfExiste.some(
-    //   (cpfExistente) => cpfExistente.cpf === cpfHTML.value
-    // );
-    // if (existeCPF) {
-    //   alert("CPF já cadastrado no sistema");
-    //   resetCPF();
-    //   return;
-    // }
-    // // aprender a como retirar caracter especial
-    // if (!cpfHTML.value) {
-    //   alert("Necessário digitar um CPF");
-    //   return;
-    // }
-    // if (cpfHTML.value.length !== 11) {
-    //   alert("Favor digitar cpf com 11 digitos");
-    //   return;
-    // }
-    // botaoCPF.setAttribute("data-bs-toggle", "modal");
-}
 //Inicio Modal
 let nomeCadastroHTML = document.querySelector(".nomeCadastro");
 let emailCadastroHTML = document.querySelector(".emailCadastro");
@@ -75,8 +47,6 @@ formularioCadastro.addEventListener("submit", (event) => {
     }
     cadastrarUsuario();
     formularioCadastro.reset();
-    resetCPF();
-    // mostrarModal.()
 });
 // Inicio Troca Telas
 const loginContainer = document.querySelector("#container-login");
@@ -89,27 +59,7 @@ const openLog = document.querySelector("#openLoginMobile");
 const openCad = document.querySelector("#openCadastroMobile");
 openLog.addEventListener("click", moveOverlay);
 openCad.addEventListener("click", moveOverlay);
-// function mostrarModal(): void {
-//   aparecerModal.style.display = "block";
-// }
-// function esconderModal(): void {
-//   aparecerModal.style.display = "none";
-// }
 function validarCampos() {
-    // if (
-    //   nomeCadastroHTML.value === "" ||
-    //   emailCadastroHTML.value === "" ||
-    //   cpfHTML.value === "" ||
-    //   senhaCadastroHTML.value === "" ||
-    //   senhaCadastroConfirmHTML.value === ""
-    // ) {
-    //   alert("Campos em Branco");
-    //   return false;
-    // }
-    // if (senhaCadastroHTML.value.length < 5) {
-    //   alert("Digite no minimo 5 caracteres");
-    //   return false;
-    // }
     if (senhaCadastroHTML.value !== senhaCadastroConfirmHTML.value) {
         alert("Senhas divergentes");
         return false;
@@ -132,8 +82,6 @@ function cadastrarUsuario() {
     };
     listaDeUsuarios.push(novoUsuario);
     salvarUsuarioStorage(listaDeUsuarios);
-    // esconderModal();
-    // resetNovoUsuario();
 }
 function buscarUsuariosStorage() {
     return JSON.parse(localStorage.getItem("usuarios") || "[]");
@@ -142,9 +90,9 @@ function salvarUsuarioStorage(novoUsuario) {
     localStorage.setItem("usuarios", JSON.stringify(novoUsuario));
 }
 function login() {
-    alert("Logado");
-    window.location.href = "sistema.html";
-    //melhorar
+    setTimeout(() => {
+        window.location.href = "sistema.html";
+    }, 500);
 }
 function resetCPF() {
     cpfHTML.value = "";
@@ -158,4 +106,38 @@ function resetNovoUsuario() {
     emailCadastroHTML.value === "";
     senhaCadastroHTML.value === "";
     senhaCadastroConfirmHTML.value === "";
+}
+function modalConfirmcao() {
+    const div1 = document.createElement("div");
+    div1.classList.add("w-50");
+    div1.classList.add("p-1");
+    div1.setAttribute("id", "liveAlertPlaceholder");
+    const divNova = document.getElementById("tabelaDinamica");
+    divNova.appendChild(div1);
+    const alertPlaceholder = document.getElementById("liveAlertPlaceholder");
+    const alert = (message, type) => {
+        const wrapper = document.createElement("div");
+        wrapper.innerHTML = [
+            `<div class="alert alert-${type} alert-dismissible fade show" role="alert">`,
+            `   <div>${message}</div>`,
+            "</div>",
+        ].join("");
+        alertPlaceholder.append(wrapper);
+        setTimeout(() => {
+            div1.remove();
+        }, 2000);
+    };
+    const alertTrigger = document.getElementById("liveAlertBtn");
+    if (alertTrigger) {
+        alertTrigger.addEventListener("click", () => {
+            alert("Alteração de dados efetuada.", "success");
+            atualizarDadosUsuarioLogado(dadosUsuarioLogado);
+        });
+    }
+    const alertTriggerC = document.getElementById("liveAlertBtnC");
+    if (alertTriggerC) {
+        alertTriggerC.addEventListener("click", () => {
+            alert("Alteração de dados cancelada.", "danger");
+        });
+    }
 }
