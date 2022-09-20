@@ -36,23 +36,8 @@ let dadosUsuarioLogado: Usuario;
 document.addEventListener("DOMContentLoaded", () => {
   let IDUsuarioLogado = localStorage.getItem("usuarioLogado");
 
-  // const botaoDeslogado = document.getElementById(
-  //   "usuarioDeslogado"
-  // ) as HTMLButtonElement;
-
-  // let divDesl = document.getElementById("container") as HTMLDivElement;
-
-  // let deslogado = document.getElementById("deslogado") as HTMLDivElement;
-  // divDesl.appendChild(deslogado);
-
   if (!IDUsuarioLogado) {
-    alert("rala");
-    // deslogado.innerHTML;
-    // botaoDeslogado.addEventListener("click", () => {
     window.location.href = "login.html";
-    //   return;
-    // });
-    // alert("Necessário estar logado para acessar a página");
   }
 
   let listaUsuarios = buscarTodosUsuariosStorage();
