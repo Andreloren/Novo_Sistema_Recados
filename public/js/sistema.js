@@ -124,9 +124,9 @@ function montarHTML(novasMensagens) {
     botaoSalvarEditar.classList.add("btn-sm");
     botaoSalvarEditar.classList.add("d-none");
     botaoSalvarEditar.addEventListener("click", () => {
-        modalConfirmacao();
-        // editarMensagens(novasMensagens);
+        editarMensagens(novasMensagens.identificador);
         cancelarCamposEdicao();
+        modalConfirmacao();
     });
     let botaoCancelarEditar = document.createElement("button");
     botaoCancelarEditar.innerHTML = "Cancelar";
@@ -184,6 +184,12 @@ function montarHTML(novasMensagens) {
         botaoEditar.classList.remove("d-none");
         botaoApagar.classList.remove("d-none");
     }
+    function editarMensagens(id) {
+        let mensagemAlterada = dadosUsuarioLogado.mensagens.findIndex((mensagem) => mensagem.identificador === id);
+        dadosUsuarioLogado.mensagens[mensagemAlterada].descricao = inputDesc.value;
+        dadosUsuarioLogado.mensagens[mensagemAlterada].detalhamento =
+            inputDet.value;
+    }
 }
 function apagarMensagens(Id) {
     let IdMensagemEncontrada = dadosUsuarioLogado.mensagens.findIndex((mensagem) => mensagem.identificador === Id);
@@ -219,6 +225,7 @@ function modalConfirmacao() {
     if (alertTrigger) {
         alertTrigger.addEventListener("click", () => {
             alert("Alteração de dados efetuada.", "success");
+            atualizarDadosUsuarioLogado(dadosUsuarioLogado);
         });
     }
     const alertTriggerC = document.getElementById("liveAlertBtnC");
@@ -228,4 +235,3 @@ function modalConfirmacao() {
         });
     }
 }
-function editarMensagens(mensagem) { }

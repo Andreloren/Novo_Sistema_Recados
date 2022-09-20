@@ -171,9 +171,9 @@ function montarHTML(novasMensagens: Mensagens): void {
   botaoSalvarEditar.classList.add("btn-sm");
   botaoSalvarEditar.classList.add("d-none");
   botaoSalvarEditar.addEventListener("click", () => {
-    modalConfirmacao();
-    // editarMensagens(novasMensagens);
+    editarMensagens(novasMensagens.identificador);
     cancelarCamposEdicao();
+    modalConfirmacao();
   });
 
   let botaoCancelarEditar = document.createElement("button");
@@ -235,6 +235,16 @@ function montarHTML(novasMensagens: Mensagens): void {
     botaoEditar.classList.remove("d-none");
     botaoApagar.classList.remove("d-none");
   }
+
+  function editarMensagens(id: string): void {
+    let mensagemAlterada = dadosUsuarioLogado.mensagens.findIndex(
+      (mensagem) => mensagem.identificador === id
+    );
+
+    dadosUsuarioLogado.mensagens[mensagemAlterada].descricao = inputDesc.value;
+    dadosUsuarioLogado.mensagens[mensagemAlterada].detalhamento =
+      inputDet.value;
+  }
 }
 
 function apagarMensagens(Id: string): void {
@@ -286,6 +296,7 @@ function modalConfirmacao(): void {
   if (alertTrigger) {
     alertTrigger.addEventListener("click", () => {
       alert("Alteração de dados efetuada.", "success");
+      atualizarDadosUsuarioLogado(dadosUsuarioLogado);
     });
   }
 
@@ -296,5 +307,3 @@ function modalConfirmacao(): void {
     });
   }
 }
-
-function editarMensagens(mensagem: Mensagens): void {}
